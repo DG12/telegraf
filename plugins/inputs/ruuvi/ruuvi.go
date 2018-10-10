@@ -13,6 +13,7 @@ import (
 	"gitlab.com/jtaimisto/bluewalker/hci"
 	"gitlab.com/jtaimisto/bluewalker/host"
 	"gitlab.com/jtaimisto/bluewalker/ruuvi"
+	"gitlab.com/jtaimisto/bluewalker/filter"
 )
 
 type Ruuvi struct {
@@ -82,7 +83,7 @@ func (m *Ruuvi) Gather(acc telegraf.Accumulator) error {
 		return fmt.Errorf("Unable to initialize host: %s", err.Error())
 	}
 
-	reportChan, err := host.StartScanning(false, nil);
+	reportChan, err := host.StartScanning(false, []filter.AdFilter{filter.ByVendor([]byte{0x99, 0x04})});
 	if err != nil {
 		host.Deinit()
 		return fmt.Errorf("Unable to start scanning: %s", err.Error());
