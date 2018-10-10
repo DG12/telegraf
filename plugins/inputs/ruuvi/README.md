@@ -1,7 +1,7 @@
 # Ruuvi Tag Input Plugin
 
 Reads Ruuvi tag basic firmware output via raw bluetooth sockets. Requires raw socket access to HCI device,
-meaning that bluetooth services must be disabled for that particular Bluetooth Internet.
+meaning that bluetooth services must be disabled for that particular Bluetooth Interface.
 
 ### Configuration 
 
